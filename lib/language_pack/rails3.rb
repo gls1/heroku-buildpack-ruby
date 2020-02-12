@@ -57,7 +57,8 @@ class LanguagePack::Rails3 < LanguagePack::Rails2
       mcount("warn.assets.compile.true")
 
       safe_sprockets_version_needed = sprocket_version_upgrade_needed
-      if safe_sprockets_version_needed
+      # bypass sprockets check because app has been patched for CVE-2018-3760
+      if false   # if safe_sprockets_version_needed
         message = <<ERROR
 A security vulnerability has been detected in your application.
 To protect your application you must take action. Your application
